@@ -14,6 +14,9 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
+import org.thymeleaf.templateresolver.ITemplateResolver;
+import service.IProductService;
+import service.impl.ProductServiceImpl;
 //import service.IProductService;
 //import service.impl.DemoServiceImpl;
 //import service.impl.ProductServiceImpl;
@@ -48,7 +51,7 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
 
 
     @Bean
-    public SpringResourceTemplateResolver templateResolver() {
+    public ITemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
         templateResolver.setPrefix("/views/");
@@ -58,11 +61,11 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
         return templateResolver;
     }
 
-//    @Bean
-//    public IProductService productService() {
-//        return new ProductServiceImpl();
-//    }
-//
+    @Bean
+    public IProductService productService() {
+        return new ProductServiceImpl();
+    }
+
 //    @Bean
 //    public IProductService demoService() {
 //        return new DemoServiceImpl();
